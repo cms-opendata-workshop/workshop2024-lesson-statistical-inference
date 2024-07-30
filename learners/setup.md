@@ -2,53 +2,34 @@
 title: Setup
 ---
 
-FIXME: Setup instructions live in this document. Please specify the tools and
-the data sets the Learner needs to have installed.
+This exercise uses Combine, the CMS statistical analysis and combination tool. 
+Combine is built around ROOT, RooFit and RooStats. It provides a command-line interface to several common workflows used in HEP statistical analysis.  
 
-## Data Sets
+More information on Combine can be found in 
+* the Combine paper: [CMS-CAT-23-001 / arXiv:2404.06614](https://arxiv.org/abs/2404.06614)
+* detailed user manual: [Combine github pages](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/)
 
-<!--
-FIXME: place any data you want learners to use in `episodes/data` and then use
-       a relative link ( [data zip file](data/lesson-data.zip) ) to provide a
-       link to it, replacing the example.com link.
--->
-Download the [data zip file](https://example.com/FIXME) and unzip it to your Desktop
+CMS users can use Combine as part of CMS software. But Combine was also recently released for public use ([public use instructions](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/#oustide-of-cmssw-recommended-for-non-cms-users)).
 
-## Software Setup
+:::::::::::: prereq
 
-::::::::::::::::::::::::::::::::::::::: discussion
+For this exercise, we will use a standalone version of Combine available in a Docker container.
 
-### Details
+Install the Combine container using
 
-Setup for different systems can be presented in dropdown menus via a `spoiler`
-tag. They will join to this discussion block, so you can give a general overview
-of the software used in this lesson here and fill out the individual operating
-systems (and potentially add more, e.g. online setup) in the solutions blocks.
+```bash
+docker run --name combine -it gitlab-registry.cern.ch/cms-cloud/combine-standalone:v9.2.1
+```
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::
+You can start the container using
 
-:::::::::::::::: spoiler
+```bash
+docker start -i combine
+```
 
-### Windows
-
-Use PuTTY
-
-::::::::::::::::::::::::
-
-:::::::::::::::: spoiler
-
-### MacOS
-
-Use Terminal.app
-
-::::::::::::::::::::::::
+::::::::::::
 
 
-:::::::::::::::: spoiler
 
-### Linux
 
-Use Terminal
-
-::::::::::::::::::::::::
 
