@@ -1,114 +1,232 @@
----
-title: "Using Markdown"
+--
+title: "Limit calculation challenge"
 teaching: 10
-exercises: 2
+exercises: 30
 ---
 
-:::::::::::::::::::::::::::::::::::::: questions 
+:::::::::: questions
 
-- How do you write a lesson using Markdown and `{sandpaper}`?
+- How do I write a Combine datacard for a counting analysis and for a shape analysis?
+- How do I incorporate the effects of systematic uncertainties?
+- How do I calculate expected and observed limits?
+- How do I interpret the resulting limits?
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::
 
-::::::::::::::::::::::::::::::::::::: objectives
+:::::::::: objectives
 
-- Explain how to use markdown with The Carpentries Workbench
-- Demonstrate how to include pieces of code, figures, and nested challenge blocks
+- Construct a Combine datacard for a counting analysis, learn to modify systematics.
+- Construct a Combine datacard for a shape analysis, learn to modify systematics.
+- Calculate limits using Combine with different methods for counting and shape datacards and compare.
+- Understand what the limits mean.
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::
 
-## Introduction
+The goal of this exercise is to use the `Combine` tool to calculate limits from the results of the $Z'$ search studied in the previous exercises. We will use the `Zprime_hists_FULL.root` file generated during the [Uncertainties challenge](https://cms-opendata-workshop.github.io/workshop2024-lesson-uncertainties/instructor/05-challenge.html).  We will build various datacards from it, add systematics, calculate limits on the signal strength and understand the output.
 
-This is a lesson created via The Carpentries Workbench. It is written in
-[Pandoc-flavored Markdown](https://pandoc.org/MANUAL.txt) for static files and
-[R Markdown][r-markdown] for dynamic files that can render code into output. 
-Please refer to the [Introduction to The Carpentries 
-Workbench](https://carpentries.github.io/sandpaper-docs/) for full documentation.
+:::::::: prereq
 
-What you need to know is that there are three sections required for a valid
-Carpentries lesson:
+For the activities in this session you will need:
 
- 1. `questions` are displayed at the beginning of the episode to prime the
-    learner for the content.
- 2. `objectives` are the learning objectives for an episode displayed with
-    the questions.
- 3. `keypoints` are displayed at the end of the episode to reinforce the
-    objectives.
+ * Your Combine docker container (installation instructions provided in the setup section of this tutorial)
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+:::::::::
 
-Inline instructor notes can help inform instructors of timing challenges
-associated with the lessons. They appear in the "Instructor View"
+## Statistical analysis as a counting experiment
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+At the end of the [https://cms-opendata-workshop.github.io/workshop2024-lesson-event-selection/](event selection exercise), you applied a set of selection criteria to events that would enhance $Z'$ signal from SM backgrounds. Then you obtained the ttbar mass distributions for data, $Z'$ signal and a set of SM background processes after this selection. In the [Uncertainties challenge](https://cms-opendata-workshop.github.io/workshop2024-lesson-uncertainties/instructor/05-challenge.html) exercise, you learned to obtain variations on these distributions arising from certain systematic effects.  In this first exercise, we will treat the events surviving the selection as a single quantity to perform a statistical analysis on a counting experiment.  In other words, we will collapse the `mtt` distributions into a single "number of events" by integrating over all bins. Then we will use these numbers obtained for all histograms, including those with systematic variations, to build a counting experiment datacard.
 
-::::::::::::::::::::::::::::::::::::: challenge 
+First, start your Combine Docker container and make a working directory:
 
-## Challenge 1: Can you do it?
-
-What is the output of this command?
-
-```r
-paste("This", "new", "lesson", "looks", "good")
+```bash
+docker start -i combine
+mkdir /code/Zprime
+cd /code/Zprime
 ```
+Download the `Zprime_hists_FULL.root` and the python script to make the datacard:
+```bash
+wget https://github.com/cms-opendata-workshop/workshop2024-lesson-statistical-inference/raw/main/episodes/Zprime_hists_FULL.root
+wget https://github.com/cms-opendata-workshop/workshop2024-lesson-statistical-inference/raw/main/episodes/writecountdatacard.py
+```
+
+You can look into the `writecountdatacard.py` script to see how the datacard is written from the ROOT file.  Run the script:
+```bash
+python writecountdatacard.py
+```
+(ignore the output for the moment).  Now look into `datacard_counts.txt` and try to answer the following questions:
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Questions
+
+  * Which is the background contributing most?
+  * What can you say when you compare data, total backgrounds, and signal counts?
+  * Can you understand the effect of the various systematic uncertainties?
+  * Which systematic is expected to have the overall bigger impact?
+  * Which process is affected most by systematics?
+
+:::::::::::::::::::::::::::::::::::::::::::::::
+
+Now run Combine over this datacard to obtain the limits on our parameter of interest, signal strength, with the simple `AsymptoticLimits` option:
+
+```bash
+combine -M AsymptoticLimits datacard_count.txt
+```
+
+You will see some error messages concerning the computation of the observed limit, arising from numerical stability issues.  In order to avoid this, let's rerun by limiting the signal strength to be maximum 2:
+
+```bash
+combine -M AsymptoticLimits datacard_count.txt --rMax=2
+```
+Look at the output, and try to answer the following:
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Questions
+
+  * What is the observed limit? What is the expected limit?  What are the uncertainties on the expected limit?
+  * Did our analysis exclude this particular $Z'$ signal?
+  * What can you say when you compare the values of the observed limit with the expected limit?
+  * What does it mean that the observed limit is much lower compared to the expected limit? Does this make sense? **Hint:** Go back to the datacard and look at the data, background and signal counts.
+
+:::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Taming the observed (DON'T TRY THIS AT HOME!) 
+
+A hypothetical question: What would bring the observed limit within the expected uncertainties?  Do the necessary modifications in the datacard and see if the limit behaves as you predicted.
+
+You can rerun `writecountdatacard.py` to reset the datacard.
 
 :::::::::::::::::::::::: solution 
 
-## Output
- 
-```output
-[1] "This new lesson looks good"
-```
+## Solution
+
+Observed limit is below the expected boundaries because we have much more MC compared to data.  This means there is less room for signal to be accommodated in data, i.e. excluding signal becomes easier.  If we had more data, or less backgrounds, there would be more room for signal, and the observed limit would be more consistent with the expected.  So hypothetically one could
+  * Increase the data counts, or
+  * Decrease counts in one or more background processes.
+
+The point of this question was to increase the understanding.  We never do this in real life!!!
 
 :::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::::::::
 
-## Challenge 2: how do you nest solutions within challenge blocks?
+
+
+### Add uncertainties to the datacard
+
+Now let's add more uncertainties, both systematic and statistical.  Let's start with adding a classic - the systematic uncertainty due to luminosity measurement:
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge: Add a lognormal luminosity systematic
+
+  * Please add a lognormal systematic uncertainty on luminosity (called `lumi`) that affects all signal and background processes, inducing a symmetric 2.5% up and down variation.
+  * Run Combine with the new datacard and discuss the effect on the limits.
 
 :::::::::::::::::::::::: solution 
 
-You can add a line with at least three colons and a `solution` tag.
+## Solution
+
+```
+lumi    lnN     1.025           1.025           1.025           1.025           1.025
+```
+:::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::
+
+
+Now let's add a statistical uncertainty.  Our signal and background yields come from Monte Carlo, and the number of events could be limited, resulting on non-negligible statistical uncertainties. We apply _event weights_ to these MC events so that the resulting rate matches a certain value, e.g. cross section times the luminosity.  Statistical uncertainties are particularly relevant if both the yields are small and the event weights are large (i.e. much less actual MC events are available compared to the expected yield). Here is a quote from the Combine documentation on how to take these into account:
+
+_"gmN stands for Gamma, and is the recommended choice for the statistical uncertainty in a background determined from the number of events in a control region (or in an MC sample with limited sample size). If the control region or simulated sample contains N events, and the extrapolation factor from the control region to the signal region is α, one shoud put N just after the gmN keyword, and then the value of α in the relevant (bin,process) column. The yield specified in the rate line for this (bin,process) combination should equal Nα."_
+
+Now let's get back to the output we got from running `writecountdatacard.py`.  There you see the number of total unweighted events, total weighted events and event weight for each process.
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge: Add a statistical uncertainty
+
+Look at the output of `writecountdatacard.py`:
+  * Which process has the largest event weight?
+  * Can you incorporate the statistical uncertainty for that particular process to the datacard?
+  * Run Combine and discuss the effect on the limits.
+  * OPTIONAL: You can add the statistical uncertainties for the other processes as well and observe their effect on the limits.
+
+:::::::::::::::::::::::: solution 
+
+## Solution
+
+```
+statwjets gmN 19 -               -               -               -               15.1622
+statsignal gmN 48238 0.0306	 -               -               -               -
+stattt_semilep gmN 137080 -	 0.0382          -               -               -
+stattt_had gmN 817 -             -               0.0636          -               -
+stat_ttlep gmN 6134 -            -               -               0.0325	       	 -
+```
+:::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::
+
+### Improve the limit
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Improving the limit
+
+What would you do to improve the limit here?
+
+**HINT** Look at the original plot displaying the data, background and signal distributions.
+
+:::::::::::::::::::::::: solution 
+
+## Solution
+
+  * In a count experiment setup, we can consider taking into account a part of the `mtt` distribution where the signal is dominant.
+  * We can do a shape analysis, which takes into account each bin separately.
 
 :::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Figures
+:::::::::::::::::::::::::::::::::::::::::::::::
 
-You can use standard markdown for static figures with the following syntax:
+Let's improve the limit in the couting experiment setup by computing total counts considering only the last 25 bins out of the 50 total:
 
-`![optional caption that appears below the figure](figure url){alt='alt text for
-accessibility purposes'}`
+```bash
+python writecountdatacard.py --startbin 25 --stat
+```
+We also added a flag to automatically add the satistical uncertainties :) How did the yields change? Did the limit improve?  You can try with different starting bin options to see how the limits change.
 
-![You belong in The Carpentries!](https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg){alt='Blue Carpentries hex person logo with no text.'}
+## Shape analysis
 
-::::::::::::::::::::::::::::::::::::: callout
+Now we move to a shape analysis, where each bin in the `mtt` distribution is taken into account.  Datacards for shape analyses are built with similar principles as those for counting analyses, but their syntax is slightly different.  Here is the shape datacard for the $Z'$ analysis:
 
-Callout sections can highlight information.
+```bash
+wget https://github.com/cms-opendata-workshop/workshop2024-lesson-statistical-inference/raw/main/episodes/datacard_shape.txt
+```
+Examine it and note the differences in syntax.  To run on Combine, this datacard needs to be accompanied by the `Zprime_hists_FULL.root` file, as the shapes are directly retrieved from the histograms within.  
 
-They are sometimes used to emphasise particularly important points
-but are also used in some lessons to present "asides": 
-content that is not central to the narrative of the lesson,
-e.g. by providing the answer to a commonly-asked question.
+Run Combine with this datacard.  How do the limits compare with respect to the counts case?
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Limits on cross section
+
+So far we have worked with limits on the signal strength.  How can we compute the limits on cross section?
+Can you calculate the upper limit on $Z'$ cross section for this model?
+
+:::::::::::::::::::::::: solution 
+
+## Solution
+
+We can multiply the signal strength limit with the theoretically predicted cross section for the signal process.
+
+:::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::
 
 
-## Math
 
-One of our episodes contains $\LaTeX$ equations when describing how to create
-dynamic reports with {knitr}, so we now use mathjax to describe this:
 
-`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
 
-Cool, right?
 
-::::::::::::::::::::::::::::::::::::: keypoints 
-
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-[r-markdown]: https://rmarkdown.rstudio.com/
