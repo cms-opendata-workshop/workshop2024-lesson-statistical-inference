@@ -62,10 +62,12 @@ Statistical inference is the last step of an analysis and plays a crucial role i
 ## Statistical model
 
 **Statistical model** is the mathematical framework used to describe and make inferences about the underlying processes that generate observed data. It encodes the probabilistic dependence of the observed quantities (i.e. data) on parameters of the model.  These parameters are not directly observable but can be inferred from experimental data.  They include
+
 - **parameters of interest (POI), $\vec{\mu}$:** The quantities we are interested in estimating or testing. Examples are cross section, signal strength, resonance mass, ...
 - **nuisance parameters, $\vec{\nu}$:** parameters that are not of direct interest, but required to explain data.  These could be uncertainties of experimental or theoretical origin, such as detector effects, background measurements, lumi calibration, cross-section calculation.
 
 Data are also partitioned into two:
+
 - **primary observables, $\vec{x}$**: Appear in components of the model that contain the POIs.
 - **auxiliary observables, $\vec{y}$**: Appear only in components of the model that contain the nuisance parameters.
 
