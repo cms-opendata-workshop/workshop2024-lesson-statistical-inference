@@ -359,6 +359,7 @@
 <li>What does statistical inference mean?</li>
 <li>What is a statistical model and a likelihood?</li>
 <li>What types of statistical models do we use?</li>
+<li>How do we incorporate constraints on nuisance parameters?</li>
 </ul>
 </div>
 </div>
@@ -373,6 +374,10 @@ related terminology.</li>
 <li>Understand the concept of a statistical model and a likelihood.</li>
 <li>Learn the types of statistical models generally used in
 analyses.</li>
+<li>Learn how the constraints on nuisance parameters are
+implemented.</li>
+<li>
+</li>
 </ul>
 </div>
 </div>
@@ -583,6 +588,17 @@ distribution,</p>
 <p>where the expected value, <span class="math inline">\(\lambda\)</span>, can be a function of one or more
 parameters, and represents the total number of expected signal and
 background events.</p>
+<p>For our analyses, we usually express <span class="math inline">\(\lambda\)</span>, the expected number of events
+as:</p>
+<p><span class="math display">\[\lambda \equiv n_{exp} = \mu
+\rm{\sigma_{sig}^{eff}} L + \rm{\sigma_{bg}^{eff}} L\]</span></p>
+<p>Here <span class="math inline">\(\rm{\sigma_{sig}^{eff}}\)</span> and
+<span class="math inline">\(\rm{\sigma_{bg}^{eff}}\)</span> are signal
+and background effective cross sections (i.e. cross section times
+selection efficiency times detector acceptance) and <span class="math inline">\(L\)</span> is the integrated luminosity. Our
+parameter of interest here is <span class="math inline">\(\mu\)</span>,
+the signal strength modifier. The estimated value of <span class="math inline">\(\mu\)</span> would be able to tell us if the
+signal is discovered, excluded or still out of reach.</p>
 </div>
 <div class="section level3">
 <h3 id="template-shape-analysis">Template shape analysis<a class="anchor" aria-label="anchor" href="#template-shape-analysis"></a>
@@ -634,11 +650,57 @@ below shows an example, where sigma and alpha are the uncertainties on
 parameters of the analytic function.</p>
 <figure><img src="fig/parametric_shape_analysis.png" style="width:50.0%" alt="Plot showing a parametric shape model with uncertainties" class="figure mx-auto d-block"><div class="figcaption">Plot showing a parametric shape model with
 uncertainties</div>
-</figure><!--
+</figure>
+</div>
+</section><section><h2 class="section-heading" id="handling-nuisance-parameters">Handling nuisance parameters<a class="anchor" aria-label="anchor" href="#handling-nuisance-parameters"></a>
+<a class="anchor" aria-label="anchor" href="#handling-nuisance-parameters"></a>
+</h2>
+<hr class="half-width">
+<p>When writing the auxiliary component, we usually do not explicitly
+input the auxiliary data. Instead, we can use priors that encapsulate
+the knowledge or constraints obtained from the auxiliary data. For
+example, if auxiliary experiments have measured a nuisance parameter
+<span class="math inline">\(\nu\)</span> with a certain mean and
+uncertainty <span class="math inline">\(\sigma\)</span>, this
+information can be used to define a prior distribution.</p>
+<p>Let’s give a concrete example for luminosity. Imagine a counting
+analysis, where the primary component is a Poisson. Remember that the
+number of expected events in that Poisson could be expressed as</p>
+<p><span class="math display">\[n_{exp} = \mu \rm{\sigma_{sig}^{eff}} L
++ \rm{\sigma_{bg}^{eff}} L\]</span></p>
+<p>where <span class="math inline">\(\mu\)</span> is the signal
+strength, <span class="math inline">\(\rm{\sigma_{sig}^{eff}}\)</span>
+and <span class="math inline">\(\rm{\sigma_{bg}^{eff}}\)</span> are
+signal and background effective cross sections and <span class="math inline">\(L\)</span> is the integrated luminosity. Suppose
+that, in a different study, we have measured that there is a 2.5%
+uncertainty on luminosity, which would directly effect the expected
+number of events:</p>
+<p><span class="math display">\[L \rightarrow L(1 +
+0.025)^\nu\]</span></p>
+<p>When <span class="math inline">\(\nu = 0\)</span>, no change happens
+in <span class="math inline">\(L\)</span>, and consequently <span class="math inline">\(n_{exp}\)</span>. When <span class="math inline">\(\nu = \pm 1\)</span>, we have the <span class="math inline">\(+/-\)</span> effect. We apply a Gaussian
+constraint as</p>
+<p><span class="math display">\[\pi(\nu_0, \nu) = \pi(0, \nu)
+e^{-\frac{1}{2}\nu^2}\]</span></p>
+<p>Hence, the nuisance parameter for luminosity uncertainty is
+<strong>log-normally distributed</strong>.</p>
+<p>For observed count <span class="math inline">\(N\)</span>, the
+likelihood becomes</p>
+<p><span class="math display">\[\mathcal{L}(\mu, \nu) = \frac{n_{exp}^N
+e^{-n_{exp}}}{N!}e^{-\frac{1}{2}\nu^2}\]</span></p>
+<p>where</p>
+<p><span class="math display">\[n_{exp} = \mu \rm{\sigma_{sig}^{eff}} L
+\cdot 1.025^\nu + \rm{\sigma_{bg}^{eff}} L \cdot 1.025^\nu\]</span></p>
+<p>In Bayesian analysis, we can marginalize over the nuisance parameters
+by integrating them out of the posterior distribution. This approach
+automatically accounts for the uncertainties in the nuisance parameters
+based on the priors. In frequentist analysis, we can profile out the
+nuisance parameters by finding the values that maximize the likelihood
+for each fixed value of the POI.</p>
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</div>
 </section></section><section id="aio-03-limits"><p>Content from <a href="03-limits.html">Limits</a></p>
 <hr>
 <p>Last updated on 2024-07-31 |
