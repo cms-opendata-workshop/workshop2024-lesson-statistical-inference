@@ -1,4 +1,4 @@
---
+---
 title: "Introduction to statistical inference"
 teaching: 20
 exercises: 0
@@ -57,7 +57,38 @@ Here we give pragmatic definitions for a few basic concepts that we will use.
 
 :::
 
+Statistical inference is the last step of an analysis and plays a crucial role in interpreting the experimental data. It involves using statistical methods to draw conclusions about the underlying physical processes based on observed data. This process includes defining a statistical model, constructing a likelihood function, and employing techniques such as hypothesis testing and parameter estimation to extract meaningful insights.  Let's start with the concept of a statistical model.
 
+## Statistical model
+
+**Statistical model** is the mathematical framework used to describe and make inferences about the underlying processes that generate observed data. It encodes the probabilistic dependence of the observed quantities (i.e. data) on parameters of the model.  These parameters are not directly observable but can be inferred from experimental data.  They include
+- **parameters of interest (POI), $\vec{\mu}$:** The quantities we are interested in estimating or testing. Examples are cross section, signal strength, resonance mass, ...
+- **nuisance parameters, $\vec{\nu}$:** parameters that are not of direct interest, but required to explain data.  These could be uncertainties of experimental or theoretical origin, such as detector effects, background measurements, lumi calibration, cross-section calculation.
+
+Data are also partitioned into two:
+- **primary observables, $\vec{x}$**: Appear in components of the model that contain the POIs.
+- **auxiliary observables, $\vec{y}$**: Appear only in components of the model that contain the nuisance parameters.
+
+**Likelihood** is the value of the statistical model at a given fixed set of data as a function of parameters.
+
+Statistical model provides the complete mathematical description of an analysis and is the starting point of any interpretation.
+
+Now let's express this mathamatically.  Our statistical model be described as $p(\rm{data,\vec{\Phi}})$ where $\vec{\Phi}$ are the model parameters.  For the sake of numerical efficiency, we can factorize it into two parts:
+
+$$p(\vec{x},\vec{y};\vec{\Phi}) = p(\vec{x};\vec{\mu},\vec{\nu}) \prod_k p_k(\vec{y}_k;\vec{\nu}_k)$$
+
+- **primary component:** $p(\vec{x};\vec{\mu},\vec{\nu})$.  Relates POI to primary observables.
+- **auxiliary component:** $\prod_k p_k(\vec{y}_k;\vec{\nu}_k)$. Constrains nuisance parameters.
+
+Likelihood function is constructed by evaluating $p(\rm{data,\vec{\Phi}})$ on a dataset:
+
+$$L(\vec{\Phi}) = \prod_d p(\vec{x}_d;\vec{\mu},\vec{\nu}) \prod_k p_k(\vec{y}_k;\vec{\nu}_k)$$
+
+where $d$ runs over all entries in data.
+
+This likelihood can be used in both frequentist and Bayesian calculations.
+
+## Types of statistical models
 
 
 
