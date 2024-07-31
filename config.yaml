@@ -15,13 +15,13 @@ carpentry: 'incubator'
 varnish: 'cms-opendata-workshop/varnish'
 
 # Overall title for pages.
-title: 'Lesson Title' # FIXME
+title: 'Statistical inference with Combine' # FIXME
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: ~ # FIXME
+created: '2024-07-25' # FIXME
 
 # Comma-separated list of keywords for the lesson
-keywords: 'software, data, lesson, CMS' # FIXME
+keywords: 'statistical inference, CMS, Combine, limit' # FIXME
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
@@ -64,9 +64,11 @@ contact: 'cms-dpoa-coordinator@cern.ch' # FIXME
 # Order of episodes in your lesson
 episodes: 
 - introduction.md
+- 05-challenge.md
 
 # Information for Learners
-learners: 
+learners:
+- setup.md
 
 # Information for Instructors
 instructors: 
