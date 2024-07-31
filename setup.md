@@ -6,6 +6,7 @@ This exercise uses Combine, the CMS statistical analysis and combination tool.
 Combine is built around ROOT, RooFit and RooStats. It provides a command-line interface to several common workflows used in HEP statistical analysis.  
 
 More information on Combine can be found in 
+
 * the Combine paper: [CMS-CAT-23-001 / arXiv:2404.06614](https://arxiv.org/abs/2404.06614)
 * detailed user manual: [Combine github pages](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/)
 
