@@ -253,7 +253,19 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="05-challenge.html">2. Limit calculation challenge</a>
+        <a href="04-combine.html">2. The CMS Combine statistical analysis and combination software</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush4">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading4">
+        <a href="05-challenge.html">3. Limit calculation challenge</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -616,6 +628,194 @@ Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
 </div>
+</section></section><section id="aio-04-combine"><p>Content from <a href="04-combine.html">The CMS Combine statistical analysis and combination software</a></p>
+<hr>
+<p>Last updated on 2024-07-31 |
+
+        <a href="https://github.com/cms-opendata-workshop/workbench-template-md/edit/main/episodes/04-combine.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 10 minutes</p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>What is Combine?</li>
+<li>How do I input a statistical model into Combine?</li>
+<li>What tasks does Combine perform?</li>
+<li>Can I use Combine outside CMS? Where can I find detailed
+documentation?</li>
+<li>What does it mean to publish a statistical model, and why is it so
+important?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Get introduced to the Combine tool.</li>
+<li>Learn the principles of how to input a statistical model</li>
+<li>Learn the set of tasks performed by Combine.</li>
+<li>Learn how to access information on how to run Combine outside CMS,
+and access documentation.</li>
+<li>Learn the concept of statistical model publication and how to access
+the first model published by CMS.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="what-is-combine">What is Combine?<a class="anchor" aria-label="anchor" href="#what-is-combine"></a>
+<a class="anchor" aria-label="anchor" href="#what-is-combine"></a>
+</h2>
+<hr class="half-width">
+<p><strong>Combine</strong> is the statistical analysis software used in
+CMS, built around the ROOT, RooFit and RooStats packages. It provides a
+command-line interface to several common workflows used in HEP
+statistical analysis. Combine provides a standardized access to these
+workflows, which makes it a very practical and reliable tool. As of
+2024, more than 90% of the analyses in CMS use Combine for statistical
+inference.</p>
+</section><section><h2 class="section-heading" id="models-and-the-datacard">Models and the datacard<a class="anchor" aria-label="anchor" href="#models-and-the-datacard"></a>
+<a class="anchor" aria-label="anchor" href="#models-and-the-datacard"></a>
+</h2>
+<hr class="half-width">
+<p>Combine implements the statistical model and the corresponding
+likelihood in a RooFit-based custom class. The inputs to the model are
+encapsulated in a human-readable configuration file called the
+<strong>datacard</strong>. Datacard includes information such as</p>
+<ul>
+<li>signal and background processes, shapes and rates</li>
+<li>systematic and statistical uncertainties incorporated as nuisance
+parameters and their effects on the rates, along with their
+correlations</li>
+<li>multiplicative scale factors that modify the rate of a given process
+in a given channel</li>
+</ul>
+<p>Combine supports building models for counting analyses, template
+shape analyses and parametric shape analyses. Though the main datacard
+syntax is similar for these three cases, there are minor differences
+reflecting the model input. For example, in the case for a template
+shape model, one needs to specify a ROOT file with input histograms, and
+in the case of a parametric shape model, one needs to specify the
+process probability distribution functions.</p>
+<p>Constructing a datacard is usually the level most users input
+information to Combine. However, there are some cases where the
+statistical model requires modifications. An example case is where we
+need a model with multiple parameters of interest associated with
+different signal processes (e.g. measurement of signal strengths for two
+different Higgs production channels, gluon-gluon fusion and vector boson
+fusion). Combine also allows to build custom models by introducing
+modified model classes.</p>
+<p>Combine scales well with model complexity</p>
+<p>is a powerful tool for combining a large number of</p>
+<p>Powerful for combinations, scales well with model complexity</p>
+</section><section><h2 class="section-heading" id="tasks-performed-by-combine">Tasks performed by Combine<a class="anchor" aria-label="anchor" href="#tasks-performed-by-combine"></a>
+<a class="anchor" aria-label="anchor" href="#tasks-performed-by-combine"></a>
+</h2>
+<hr class="half-width">
+<p>Combine is capable of performing many statistical tasks. The main
+interface is with the command below</p>
+<pre><code>combine &lt;datacard.[txt|root]&gt; -M &lt;method&gt;</code></pre>
+<p>where one enters a datacard (either as text or in a ROOT-converted
+format) and specifies the method pointing to a task.</p>
+<p>Here is a set of methods used for extracting results:</p>
+<ul>
+<li>
+<a href="**HybridNew:**">http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/commonstatsmethods/#computing-limits-with-toys</a>
+compute modified frequentist limits with pseudo-data, p-values,
+significance and confidence intervals with several options, –LHCmode
+LHC-limits is the recommended one.</li>
+<li>
+<a href="**AsymptoticLimits:**">http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/commonstatsmethods/#asymptotic-frequentist-limits</a>
+limits calculated according to the asymptotic formulas in
+arxiv:1007.1727, valid for large event counts.</li>
+<li>
+<a href="**Significance:**">http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/commonstatsmethods/#asymptotic-significances</a>
+simple profile likelihood approximation for calculating
+significances.</li>
+<li>
+<a href="**BayesianSimple:**">http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/commonstatsmethods/#bayesian-limits-and-credible-regions</a>
+and <a href="**MarkovChainMC**">http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/commonstatsmethods/#computing-the-observed-bayesian-limit-for-arbitrary-models</a>
+compute Bayesian upper limits and credible intervals for simple and
+arbitrary models.</li>
+<li>
+<a href="**MultiDimFit:**">http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/commonstatsmethods/#likelihood-fits-and-scans</a>
+perform maximum likelihood fit, with multiple POIs, estimate CI from
+likelihood scans.</li>
+</ul>
+<p>Combine also provides an extensive toolset for validation and
+diagnosis:</p>
+<ul>
+<li>
+<a href="**GoodnessOfFit:**">https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/commonstatsmethods/#goodness-of-fit-tests</a>
+perform a goodness of fit test for models including shape information
+using several GoF estimators (saturated, Kolmogorov-Smirnov,
+Anderson-Darling)</li>
+<li>
+<a href="**Impacts:**">https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/nonstandard/#nuisance-parameter-impacts</a>
+evaluate the shift in POI from ￼ variation for each nuisance
+parameter.</li>
+<li>
+<a href="**ChannelCompatibiltyCheck:**">http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/commonstatsmethods/#channel-compatibility</a>
+check how consistent are the individual channels of a combination
+are</li>
+<li>
+<a href="**GenerateOnly:**">https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/runningthetool/#generate-only</a>
+generate random or Asimov pseudo-datasets for use as input to other
+methods</li>
+</ul></section><section><h2 class="section-heading" id="running-combine-and-detailed-references">Running Combine and detailed references<a class="anchor" aria-label="anchor" href="#running-combine-and-detailed-references"></a>
+<a class="anchor" aria-label="anchor" href="#running-combine-and-detailed-references"></a>
+</h2>
+<hr class="half-width">
+<p>In 2024 Combine tool became available to the public along with</p>
+<ul>
+<li>a detailed paper: <a href="https://arxiv.org/abs/2404.06614" class="external-link">CMS-CAT-23-001 /
+arXiv:2404.06614</a> and a</li>
+<li>detailed user manual: <a href="https://cms-analysis.github.io/HiggsAnalysis-Combined%20Limit/latest/" class="external-link">Combine
+github pages</a>
+</li>
+</ul>
+<p>The easiest way to run Combine is to use a Docker containerized
+version of it (which we will do in the next exercise). However there are
+other ways to</p>
+</section><section><h2 class="section-heading" id="publishing-statistical-models">Publishing statistical models<a class="anchor" aria-label="anchor" href="#publishing-statistical-models"></a>
+<a class="anchor" aria-label="anchor" href="#publishing-statistical-models"></a>
+</h2>
+<hr class="half-width">
+<p>Statistical models provide an excellent resource for the
+community.<br>
+Publishing them will help maximize the scientific impact of the
+analysis, and facilitate</p>
+<ul>
+<li>Preservation and documentation: the mathematical construction of the
+analysis in full detail. Combination of multiple analyses</li>
+<li>Reinterpretation and reuse (within and outside the
+collaborations):</li>
+<li>Education on statistics procedures</li>
+<li>Tool development: Statistical software updates can use real world
+examples to test and debug their recent developments.</li>
+<li>there will certainly be other use cases!</li>
+</ul>
+<p>In December 2023, CMS Collaboration took the decision to release
+statistical models for all forthcoming analyses by default. In
+accordance with open access policy of CERN and CMS. Must be
+well-documented and understandable. Publishing has always been highly
+desirable. The difficulty was technical implementation. Now we have a
+way.</p>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
 </section></section><section id="aio-05-challenge"><p>Content from <a href="05-challenge.html">Limit calculation challenge</a></p>
 <hr>
 <p>Last updated on 2024-07-31 |
@@ -806,7 +1006,7 @@ datacard.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Observed limit is below the expected boundaries because we have much
 more MC compared to data. This means there is less room for signal to be
@@ -850,7 +1050,7 @@ limits.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <pre><code>lumi            lnN        1.025          1.025          1.025          1.025          1.025</code></pre>
 </div>
@@ -900,7 +1100,7 @@ observe their effect on the limits.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <pre><code>stat_signal     gmN 48238  0.0307         -              -              -              -
 stat_tt_semilep gmN 137080 -              0.0383         -              -              -
@@ -934,7 +1134,7 @@ background and signal distributions.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ul>
 <li>In a count experiment setup, we can consider taking into account a
@@ -1000,7 +1200,7 @@ model?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>We can multiply the signal strength limit with the theoretically
 predicted cross section for the signal process.</p>
