@@ -109,3 +109,4 @@ The first statistical model published is that for the Higgs boson discovery.  Th
 
 You can download the model into the Combine container and see the discovery for yourself. The commands are available to combine channels, calculate the significance, measure the signal strength and build a model as Higgs-vector boson, Higgs-fermion coupling modifiers as POIs.
 
+More models are on their way to become public soon!
