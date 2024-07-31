@@ -114,22 +114,17 @@ In a sense, this is a generalization of the counting analysis.  Template shape i
 
 Technically, input to this model is usually given as histograms.  Data, backgrounds, signals and variations on backgrounds and signals are all provided as histograms. An example can be seen in the figure below, where sigma and alpha are systematic uncertainties:
 
+![Plot showing a template shape model with uncertainties](fig/template_shape_analysis.png){width="50%"}
+
 ### Parametric shape analysis
 
 A parametric shape analysis is one that uses analytic functions rather than histograms to describe
 the probability distributions of continuous primary observables. 
-In these cases, the primary observable $x$ in each channel can be univariate or multivariate. For example, in the measurements of Higgs boson cross sections in the four-lepton decay mode, the primary observable is bivariate composed of the invariant mass of the four leptons and a kinematic discriminator designed to separate the signal and background processes. The data in parametric shape analyses can be binned, as in the case of template-based analyses, or unbinned. Uncertainties affecting the expected distributions of the signal and background processes can be implemented directly as uncertainties
-in the parameters of those analytical functions.
+In these cases, the primary observable $x$ in each channel can be univariate or multivariate. For example, in the measurements of Higgs boson cross sections in the four-lepton decay mode, the primary observable is bivariate composed of the invariant mass of the four leptons and a kinematic discriminator designed to separate the signal and background processes. The data in parametric shape analyses can be binned, as in the case of template-based analyses, or unbinned. Uncertainties affecting the expected distributions of the signal and background processes can be implemented directly as uncertainties in the parameters of those analytical functions.
 
 $$p(x;\vec{\mu}, \vec{\nu}) = \sum_p \frac{\lambda_p(\vec{\mu},\vec{\nu}) f_p(x; \vec{\mu}, \vec{\nu})}{\sum_p \lambda_p(\vec{\mu}, \vec{\nu})}$$
 
-Here $p$ stands for process and $f_p(x; \vec{\mu}, \vec{\nu})$ are the probability distribution functions for each process.  
+Here $p$ stands for process and $f_p(x; \vec{\mu}, \vec{\nu})$ are the probability distribution functions for each process.  The figure below shows an example, where sigma and alpha are the uncertainties on parameters of the analytic function.
 
-
-
-
-
-
-
-
+![Plot showing a parametric shape model with uncertainties](fig/parametric_shape_analysis.png){width="50%"}
 
