@@ -9,6 +9,7 @@ exercises: 0
 - What does statistical inference mean?
 - What is a statistical model and a likelihood?
 - What types of statistical models do we use?
+- How do we incorporate constraints on nuisance parameters?
 
 ::::::::::
 
@@ -17,7 +18,8 @@ exercises: 0
 - Understand the role of statistical inference in an analysis and related terminology.
 - Understand the concept of a statistical model and a likelihood.
 - Learn the types of statistical models generally used in analyses.
-
+- Learn how the constraints on nuisance parameters are implemented.
+- 
 :::::::::::
 
 ::: callout
@@ -101,6 +103,14 @@ $$p(n;\lambda(\vec{\mu}, \vec{\nu})) =\lambda^n\frac{e^{-\lambda}}{n!}$$
 where the expected value, $\lambda$, can be a function of one or more parameters, and represents
 the total number of expected signal and background events.
 
+For our analyses, we usually express $\lambda$, the expected number of events as:
+
+$$\lambda \equiv n_{exp} = \mu \rm{\sigma_{sig}^{eff}} L + \rm{\sigma_{bg}^{eff}} L$$
+
+Here $\rm{\sigma_{sig}^{eff}}$ and $\rm{\sigma_{bg}^{eff}}$ are signal and background effective cross sections 
+(i.e. cross section times selection efficiency times detector acceptance) and $L$ is the integrated luminosity.  Our parameter of interest here is $\mu$, the signal strength modifier.  The estimated value of $\mu$ would be able to tell us if the signal is discovered, excluded or still out of reach.
+
+
 ### Template shape analysis
 
 A shape analysis is defined as one that incorporates one or more primary observables, beyond a
@@ -129,4 +139,40 @@ $$p(x;\vec{\mu}, \vec{\nu}) = \sum_p \frac{\lambda_p(\vec{\mu},\vec{\nu}) f_p(x;
 Here $p$ stands for process and $f_p(x; \vec{\mu}, \vec{\nu})$ are the probability distribution functions for each process.  The figure below shows an example, where sigma and alpha are the uncertainties on parameters of the analytic function.
 
 ![Plot showing a parametric shape model with uncertainties](fig/parametric_shape_analysis.png){width="50%"}
+
+
+## Handling nuisance parameters
+
+When writing the auxiliary component, we usually do not explicitly input the auxiliary data.  Instead, we can use priors that encapsulate the knowledge or constraints obtained from the auxiliary data. For example, if auxiliary experiments have measured a nuisance parameter $\nu$ with a certain mean and uncertainty $\sigma$, this information can be used to define a prior distribution.
+
+Let's give a concrete example for luminosity.  Imagine a counting analysis, where the primary component is a Poisson. Remember that the number of expected events in that Poisson could be expressed as
+
+$$n_{exp} = \mu \rm{\sigma_{sig}^{eff}} L + \rm{\sigma_{bg}^{eff}} L$$
+
+where $\mu$ is the signal strength, $\rm{\sigma_{sig}^{eff}}$ and $\rm{\sigma_{bg}^{eff}}$ are signal and background effective cross sections and $L$ is the integrated luminosity.  Suppose that, in a different study, we have measured that there is a 2.5% uncertainty on luminosity, which would directly effect the expected number of events:
+
+$$L \rightarrow L(1 + 0.025)^\nu$$
+
+When $\nu = 0$, no change happens in $L$, and consequently $n_{exp}$.  When $\nu = \pm 1$, we have the $+/-$ effect.  We apply a Gaussian constraint as
+
+$$\pi(\nu_0, \nu) = \pi(0, \nu) e^{-\frac{1}{2}\nu^2}$$
+
+Hence, the nuisance parameter for luminosity uncertainty is **log-normally distributed**.
+
+For observed count $N$, the likelihood becomes
+
+$$\mathcal{L}(\mu, \nu) = \frac{n_{exp}^N e^{-n_{exp}}}{N!}e^{-\frac{1}{2}\nu^2}$$
+
+where 
+
+$$n_{exp} = \mu \rm{\sigma_{sig}^{eff}} L \cdot 1.025^\nu + \rm{\sigma_{bg}^{eff}} L \cdot 1.025^\nu$$
+
+
+In Bayesian analysis, we can marginalize over the nuisance parameters by integrating them out of the posterior distribution. This approach automatically accounts for the uncertainties in the nuisance parameters based on the priors. In frequentist analysis, we can profile out the nuisance parameters by finding the values that maximize the likelihood for each fixed value of the POI.
+
+
+
+
+
+
 
