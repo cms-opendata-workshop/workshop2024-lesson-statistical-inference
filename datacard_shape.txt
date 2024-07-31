@@ -1,0 +1,19 @@
+imax 1 # number of channels
+jmax 4 # number of backgrounds
+kmax * # number of nuisances
+# ---------------
+shapes * ch1 Zprime_hists_FULL.root mtt__$PROCESS mtt__$PROCESS__$SYSTEMATIC
+# ---------------
+bin             ch1
+observation     -1
+# ------------------------------
+bin             ch1         ch1         ch1         ch1         ch1         
+process         signal      tt_semilep  tt_had      tt_lep      wjets
+process         0           1           2           3           4
+rate            -1          -1          -1          -1          -1
+# --------------------------------
+lumi    lnN     1.025       1.025       1.025       1.025       1.025
+pu      shape   1           1           1           1           1   
+muId    shape   1           1           1           1           1
+
+ch1 autoMCStats 10 0 1

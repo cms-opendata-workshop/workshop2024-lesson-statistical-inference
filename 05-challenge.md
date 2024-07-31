@@ -45,8 +45,8 @@ cd /code/Zprime
 ```
 Download the `Zprime_hists_FULL.root` and the python script to make the datacard:
 ```bash
-wget https://github.com/cms-opendata-workshop/workshop2024-lesson-statistical-inference/raw/main/episodes/Zprime_hists_FULL.root
-wget https://github.com/cms-opendata-workshop/workshop2024-lesson-statistical-inference/raw/main/episodes/writecountdatacard.py
+wget https://github.com/cms-opendata-workshop/workshop2024-lesson-statistical-inference/raw/main/instructors//Zprime_hists_FULL.root
+wget https://github.com/cms-opendata-workshop/workshop2024-lesson-statistical-inference/raw/main/instructors//writecountdatacard.py
 ```
 
 You can look into the `writecountdatacard.py` script to see how the datacard is written from the ROOT file.  Run the script:
@@ -131,7 +131,7 @@ Now let's add more uncertainties, both systematic and statistical.  Let's start 
 ## Solution
 
 ```
-lumi    lnN     1.025           1.025           1.025           1.025           1.025
+lumi            lnN        1.025          1.025          1.025          1.025          1.025
 ```
 :::::::::::::::::::::::::::::::::
 
@@ -159,12 +159,13 @@ Look at the output of `writecountdatacard.py`:
 ## Solution
 
 ```
-statwjets gmN 19 -               -               -               -               15.1622
-statsignal gmN 48238 0.0306	 -               -               -               -
-stattt_semilep gmN 137080 -	 0.0382          -               -               -
-stattt_had gmN 817 -             -               0.0636          -               -
-stat_ttlep gmN 6134 -            -               -               0.0325	       	 -
+stat_signal     gmN 48238  0.0307         -              -              -              -
+stat_tt_semilep gmN 137080 -              0.0383         -              -              -
+stat_tt_had     gmN 817    -              -              0.0636         -              -
+stat_tt_lep     gmN 16134  -              -              -              0.0325         -
+stat_wjets	gmN 19     -              -              -              -              15.1623
 ```
+
 :::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::
@@ -193,16 +194,16 @@ What would you do to improve the limit here?
 Let's improve the limit in the couting experiment setup by computing total counts considering only the last 25 bins out of the 50 total:
 
 ```bash
-python writecountdatacard.py --startbin 25 --stat
+python writecountdatacard.py --startbin 25 --stat --lm
 ```
-We also added a flag to automatically add the satistical uncertainties :) How did the yields change? Did the limit improve?  You can try with different starting bin options to see how the limits change.
+We also added flags to automatically add the satistical and lumi uncertainties :). How did the yields change? Did the limit improve?  You can try with different starting bin options to see how the limits change.
 
 ## Shape analysis
 
 Now we move to a shape analysis, where each bin in the `mtt` distribution is taken into account.  Datacards for shape analyses are built with similar principles as those for counting analyses, but their syntax is slightly different.  Here is the shape datacard for the $Z'$ analysis:
 
 ```bash
-wget https://github.com/cms-opendata-workshop/workshop2024-lesson-statistical-inference/raw/main/episodes/datacard_shape.txt
+wget https://github.com/cms-opendata-workshop/workshop2024-lesson-statistical-inference/raw/main/instructors/datacard_shape.txt
 ```
 Examine it and note the differences in syntax.  To run on Combine, this datacard needs to be accompanied by the `Zprime_hists_FULL.root` file, as the shapes are directly retrieved from the histograms within.  
 
@@ -225,7 +226,11 @@ We can multiply the signal strength limit with the theoretically predicted cross
 
 :::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::: keypoints
 
+- xxx
+- yyy
+::::::::::::
 
 
 
