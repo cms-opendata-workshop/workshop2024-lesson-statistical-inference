@@ -37,12 +37,8 @@ The process of calculating limits typically involves the following steps:
 2. **Perform Hypothesis Testing**:
    - **Null hypothesis (or background-only hypothesis) ($H_0$)**: This hypothesis assumes that there is no new physics, meaning the data can be fully explained by the standard model or another established theory.
    - **Alternative hypothesis or signal+background hypothesis ($H_1$)**: This hypothesis posits the presence of new physics, implying deviations from the predictions of the null hypothesis.
-   - **Test statistic**: Calculate a test statistic, such as the profile likelihood ratio, which compares how well the data fits under both $H_0$ and $H_1$. The profile likelihood ratio is defined as:
-
-$$\lambda(\mu) = \frac{\mathcal{L}(\mu, \hat{\hat{\nu}})}{\mathcal{L}(\hat{\mu}, \hat{\nu})}$$
-
+   - **Test statistic**: Calculate a test statistic, such as the profile likelihood ratio, which compares how well the data fits under both $H_0$ and $H_1$. The profile likelihood ratio is defined as:$$\lambda(\mu) = \frac{\mathcal{L}(\mu, \hat{\hat{\nu}})}{\mathcal{L}(\hat{\mu}, \hat{\nu})}$$
 where $\mathcal{L}$ is the likelihood function, $\mu$ and $\nu$ represent the parameters of interest and nuisance parameters, $\hat{\mu}$ and $\hat{\nu}$ are the best-fit parameters, and $\hat{\hat{\nu}}$ is the conditional maximum likelihood estimator of the nuisance parameters given $\mu$.  Note that in the current LHC analyses, we use more complex test statistics such as the LHC-style test statistic.  However, despite the added complexity, the main idea is the same.  The test statistic is evaluated for observed data or pseudo-data 
-
    - **p-value**: Determine the p-value, which quantifies the probability of obtaining data as extreme as observed under the null hypothesis. A small p-value indicates that the null hypothesis is unlikely.
    - **Confidence level**: Set a confidence level (e.g., 95%) to determine the exclusion limits. The confidence level represents the probability that the true parameter values lie within the calculated limits if the experiment were repeated many times.
 
@@ -52,6 +48,7 @@ where $\mathcal{L}$ is the likelihood function, $\mu$ and $\nu$ represent the pa
    - **Expected limits:** Get the null hypothesis, e.g. background estimation from simulation or a data-driven method. Obtain the limits by comparing estimated BG with signal + estimated BG. Useful for predicting the analysis sensitivity.
 
 4. **Compare and interpret**:
+
    - Compare the observed limits with the expected limits to interpret the results. If the observed limits are significantly different from the expected limits, this may indicate potential new physics.
 
 

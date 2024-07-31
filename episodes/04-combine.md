@@ -24,7 +24,7 @@ exercises: 0
 
 :::::::::::
 
-![](fig/combinelogo.png){width="50%"}
+![](fig/combinelogo.png){width="35%"}
 
 ## What is Combine?
 
