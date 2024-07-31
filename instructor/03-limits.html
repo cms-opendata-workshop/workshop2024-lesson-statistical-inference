@@ -18,13 +18,13 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-8">
       <div class="large-logo">
-        <img id="dpoa-logo" alt="CMS DPOA logo" src="../assets/images/dpoa-logo.png"><span class="badge text-bg-danger">
-          <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
-            <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link">
-              <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
-              Pre-Alpha
+        <img id="dpoa-logo" alt="CMS DPOA logo" src="../assets/images/dpoa-logo.png"><span class="badge text-bg-info">
+          <abbr title="This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.">
+            <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#polishing-beta-stage" class="external-link alert-link">
+              <i aria-hidden="true" class="icon" data-feather="alert-circle" style="border-radius: 5px"></i>
+              Beta
             </a>
-            <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+            <span class="visually-hidden">This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.</span>
           </abbr>
         </span>
 
@@ -384,12 +384,10 @@ predictions of the null hypothesis.</li>
 <strong>Test statistic</strong>: Calculate a test statistic, such as
 the profile likelihood ratio, which compares how well the data fits
 under both <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span>. The profile likelihood ratio is
-defined as:</li>
-</ul></li>
-</ol><p><span class="math display">\[\lambda(\mu) = \frac{\mathcal{L}(\mu,
-\hat{\hat{\nu}})}{\mathcal{L}(\hat{\mu}, \hat{\nu})}\]</span></p>
-<p>where <span class="math inline">\(\mathcal{L}\)</span> is the
-likelihood function, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> represent the parameters of interest
+defined as:<span class="math display">\[\lambda(\mu) =
+\frac{\mathcal{L}(\mu, \hat{\hat{\nu}})}{\mathcal{L}(\hat{\mu},
+\hat{\nu})}\]</span> where <span class="math inline">\(\mathcal{L}\)</span> is the likelihood function,
+<span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> represent the parameters of interest
 and nuisance parameters, <span class="math inline">\(\hat{\mu}\)</span>
 and <span class="math inline">\(\hat{\nu}\)</span> are the best-fit
 parameters, and <span class="math inline">\(\hat{\hat{\nu}}\)</span> is
@@ -398,8 +396,8 @@ given <span class="math inline">\(\mu\)</span>. Note that in the current
 LHC analyses, we use more complex test statistics such as the LHC-style
 test statistic. However, despite the added complexity, the main idea is
 the same. The test statistic is evaluated for observed data or
-pseudo-data</p>
-<ul><li>
+pseudo-data</li>
+<li>
 <strong>p-value</strong>: Determine the p-value, which quantifies
 the probability of obtaining data as extreme as observed under the null
 hypothesis. A small p-value indicates that the null hypothesis is
@@ -409,7 +407,8 @@ unlikely.</li>
 95%) to determine the exclusion limits. The confidence level represents
 the probability that the true parameter values lie within the calculated
 limits if the experiment were repeated many times.</li>
-</ul><ol start="3" style="list-style-type: decimal"><li>
+</ul></li>
+<li>
 <p><strong>Calculate limits</strong>: The p-values for the
 signal-only and signal+BG hypotheses are combined in a certain way to
 obtain limits. At the LHC, we use the so-called <strong><span class="math inline">\(\mathrm{CL_s}\)</span></strong> quantity.</p>

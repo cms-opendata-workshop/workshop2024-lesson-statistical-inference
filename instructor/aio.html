@@ -34,13 +34,13 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-8">
       <div class="large-logo">
-        <img id="dpoa-logo" alt="CMS DPOA logo" src="../assets/images/dpoa-logo.png"><span class="badge text-bg-danger">
-          <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
-            <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link">
-              <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
-              Pre-Alpha
+        <img id="dpoa-logo" alt="CMS DPOA logo" src="../assets/images/dpoa-logo.png"><span class="badge text-bg-info">
+          <abbr title="This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.">
+            <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#polishing-beta-stage" class="external-link alert-link">
+              <i aria-hidden="true" class="icon" data-feather="alert-circle" style="border-radius: 5px"></i>
+              Beta
             </a>
-            <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+            <span class="visually-hidden">This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.</span>
           </abbr>
         </span>
 
@@ -722,14 +722,10 @@ predictions of the null hypothesis.</li>
 <strong>Test statistic</strong>: Calculate a test statistic, such as
 the profile likelihood ratio, which compares how well the data fits
 under both <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span>. The profile likelihood ratio is
-defined as:</li>
-</ul>
-</li>
-</ol>
-<p><span class="math display">\[\lambda(\mu) = \frac{\mathcal{L}(\mu,
-\hat{\hat{\nu}})}{\mathcal{L}(\hat{\mu}, \hat{\nu})}\]</span></p>
-<p>where <span class="math inline">\(\mathcal{L}\)</span> is the
-likelihood function, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> represent the parameters of interest
+defined as:<span class="math display">\[\lambda(\mu) =
+\frac{\mathcal{L}(\mu, \hat{\hat{\nu}})}{\mathcal{L}(\hat{\mu},
+\hat{\nu})}\]</span> where <span class="math inline">\(\mathcal{L}\)</span> is the likelihood function,
+<span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> represent the parameters of interest
 and nuisance parameters, <span class="math inline">\(\hat{\mu}\)</span>
 and <span class="math inline">\(\hat{\nu}\)</span> are the best-fit
 parameters, and <span class="math inline">\(\hat{\hat{\nu}}\)</span> is
@@ -738,8 +734,7 @@ given <span class="math inline">\(\mu\)</span>. Note that in the current
 LHC analyses, we use more complex test statistics such as the LHC-style
 test statistic. However, despite the added complexity, the main idea is
 the same. The test statistic is evaluated for observed data or
-pseudo-data</p>
-<ul>
+pseudo-data</li>
 <li>
 <strong>p-value</strong>: Determine the p-value, which quantifies
 the probability of obtaining data as extreme as observed under the null
@@ -751,7 +746,7 @@ unlikely.</li>
 the probability that the true parameter values lie within the calculated
 limits if the experiment were repeated many times.</li>
 </ul>
-<ol start="3" style="list-style-type: decimal">
+</li>
 <li>
 <p><strong>Calculate limits</strong>: The p-values for the
 signal-only and signal+BG hypotheses are combined in a certain way to
@@ -827,7 +822,7 @@ the first model published by CMS.</li>
 </div>
 </div>
 </div>
-<figure><img src="../fig/combinelogo.png" style="width:50.0%" class="figure mx-auto d-block"></figure><section><h2 class="section-heading" id="what-is-combine">What is Combine?<a class="anchor" aria-label="anchor" href="#what-is-combine"></a>
+<figure><img src="../fig/combinelogo.png" style="width:35.0%" class="figure mx-auto d-block"></figure><section><h2 class="section-heading" id="what-is-combine">What is Combine?<a class="anchor" aria-label="anchor" href="#what-is-combine"></a>
 <a class="anchor" aria-label="anchor" href="#what-is-combine"></a>
 </h2>
 <hr class="half-width">
@@ -1179,7 +1174,7 @@ datacard.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Observed limit is below the expected boundaries because we have much
 more MC compared to data. This means there is less room for signal to be
@@ -1223,7 +1218,7 @@ limits.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <pre><code>lumi            lnN        1.025          1.025          1.025          1.025          1.025</code></pre>
 </div>
@@ -1273,7 +1268,7 @@ observe their effect on the limits.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <pre><code>stat_signal     gmN 48238  0.0307         -              -              -              -
 stat_tt_semilep gmN 137080 -              0.0383         -              -              -
@@ -1307,7 +1302,7 @@ background and signal distributions.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ul>
 <li>In a count experiment setup, we can consider taking into account a
@@ -1373,7 +1368,7 @@ model?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>We can multiply the signal strength limit with the theoretically
 predicted cross section for the signal process.</p>
