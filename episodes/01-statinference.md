@@ -90,6 +90,44 @@ This likelihood can be used in both frequentist and Bayesian calculations.
 
 ## Types of statistical models
 
+### Counting analysis
+
+A counting analysis is one for which the statistical model has only one primary observable, namely the total event count in a single channel that includes multiple sources of signal and background. In the following, the primary observable is labeled $n$. The probability to observe $n$ events is described by a Poisson distribution,
+
+$$p(n;\lambda(\vec{\mu}, \vec{\nu})) =\lambda^n\frac{e^{-\lambda}}{n!}$$
+
+where the expected value, $\lambda$, can be a function of one or more parameters, and represents
+the total number of expected signal and background events.
+
+### Template shape analysis
+
+A shape analysis is defined as one that incorporates one or more primary observables, beyond a
+single number of events.  
+
+A template-based shape analysis is one in which the observable in each channel is partitioned
+into $N_B$ bins. The number of events $n_b$ in the data that fall within each bin $b$ (with $b$ running
+from 1 to $N_B$) is considered as an independent Poisson process. The model becomes a product of Poisson probabilities:
+
+$$p(x;\vec{\mu}, \vec{\nu}) = \prod_{b=1}^{N_B} P(n_b;\lambda (\vec{\mu},\vec{\nu}))$$
+
+In a sense, this is a generalization of the counting analysis.  Template shape is the model most used by LHC analyses, as we usually do not know an analytical expression that would describe how our signal or background processes are distributed.  
+
+Technically, input to this model is usually given as histograms.  Data, backgrounds, signals and variations on backgrounds and signals are all provided as histograms. An example can be seen in the figure below, where sigma and alpha are systematic uncertainties:
+
+### Parametric shape analysis
+
+A parametric shape analysis is one that uses analytic functions rather than histograms to describe
+the probability distributions of continuous primary observables. 
+In these cases, the primary observable $x$ in each channel can be univariate or multivariate. For example, in the measurements of Higgs boson cross sections in the four-lepton decay mode, the primary observable is bivariate composed of the invariant mass of the four leptons and a kinematic discriminator designed to separate the signal and background processes. The data in parametric shape analyses can be binned, as in the case of template-based analyses, or unbinned. Uncertainties affecting the expected distributions of the signal and background processes can be implemented directly as uncertainties
+in the parameters of those analytical functions.
+
+$$p(x;\vec{\mu}, \vec{\nu}) = \sum_p \frac{\lambda_p(\vec{\mu},\vec{\nu}) f_p(x; \vec{\mu}, \vec{\nu})}{\sum_p \lambda_p(\vec{\mu}, \vec{\nu})}$$
+
+Here $p$ stands for process and $f_p(x; \vec{\mu}, \vec{\nu})$ are the probability distribution functions for each process.  
+
+
+
+
 
 
 
