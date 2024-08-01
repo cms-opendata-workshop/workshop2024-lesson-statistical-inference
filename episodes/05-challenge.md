@@ -28,7 +28,7 @@ The goal of this exercise is to use the `Combine` tool to calculate limits from 
 
 For the activities in this session you will need:
 
- * Your Combine docker container (installation instructions provided in the setup section of this tutorial)
+- Your Combine docker container (installation instructions provided in the setup section of this tutorial)
 
 :::::::::
 
@@ -59,11 +59,11 @@ python writecountdatacard.py
 
 ## Questions
 
-  * Which is the background contributing most?
-  * What can you say when you compare data, total backgrounds, and signal counts?
-  * Can you understand the effect of the various systematic uncertainties?
-  * Which systematic is expected to have the overall bigger impact?
-  * Which process is affected most by systematics?
+ - Which is the background contributing most?
+ - What can you say when you compare data, total backgrounds, and signal counts?
+ - Can you understand the effect of the various systematic uncertainties?
+ - Which systematic is expected to have the overall bigger impact?
+ - Which process is affected most by systematics?
 
 :::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -84,10 +84,10 @@ Look at the output, and try to answer the following:
 
 ## Questions
 
-  * What is the observed limit? What is the expected limit?  What are the uncertainties on the expected limit?
-  * Did our analysis exclude this particular $Z'$ signal?
-  * What can you say when you compare the values of the observed limit with the expected limit?
-  * What does it mean that the observed limit is much lower compared to the expected limit? Does this make sense? **Hint:** Go back to the datacard and look at the data, background and signal counts.
+- What is the observed limit? What is the expected limit?  What are the uncertainties on the expected limit?
+- Did our analysis exclude this particular $Z'$ signal?
+- What can you say when you compare the values of the observed limit with the expected limit?
+- What does it mean that the observed limit is much lower compared to the expected limit? Does this make sense? **Hint:** Go back to the datacard and look at the data, background and signal counts.
 
 :::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -104,8 +104,9 @@ You can rerun `writecountdatacard.py` to reset the datacard.
 ## Solution
 
 Observed limit is below the expected boundaries because we have much more MC compared to data.  This means there is less room for signal to be accommodated in data, i.e. excluding signal becomes easier.  If we had more data, or less backgrounds, there would be more room for signal, and the observed limit would be more consistent with the expected.  So hypothetically one could
-  * Increase the data counts, or
-  * Decrease counts in one or more background processes.
+ 
+- Increase the data counts, or
+- Decrease counts in one or more background processes.
 
 The point of this question was to increase the understanding.  We never do this in real life!!!
 
@@ -123,8 +124,8 @@ Now let's add more uncertainties, both systematic and statistical.  Let's start 
 
 ## Challenge: Add a lognormal luminosity systematic
 
-  * Please add a lognormal systematic uncertainty on luminosity (called `lumi`) that affects all signal and background processes, inducing a symmetric 2.5% up and down variation.
-  * Run Combine with the new datacard and discuss the effect on the limits.
+- Please add a lognormal systematic uncertainty on luminosity (called `lumi`) that affects all signal and background processes, inducing a symmetric 2.5% up and down variation.
+- Run Combine with the new datacard and discuss the effect on the limits.
 
 :::::::::::::::::::::::: solution 
 
@@ -149,10 +150,11 @@ Now let's get back to the output we got from running `writecountdatacard.py`.  T
 ## Challenge: Add a statistical uncertainty
 
 Look at the output of `writecountdatacard.py`:
-  * Which process has the largest event weight?
-  * Can you incorporate the statistical uncertainty for that particular process to the datacard?
-  * Run Combine and discuss the effect on the limits.
-  * OPTIONAL: You can add the statistical uncertainties for the other processes as well and observe their effect on the limits.
+ 
+- Which process has the largest event weight?
+- Can you incorporate the statistical uncertainty for that particular process to the datacard?
+- Run Combine and discuss the effect on the limits.
+- OPTIONAL: You can add the statistical uncertainties for the other processes as well and observe their effect on the limits.
 
 :::::::::::::::::::::::: solution 
 
@@ -178,14 +180,16 @@ stat_wjets	gmN 19     -              -              -              -            
 
 What would you do to improve the limit here?
 
-**HINT** Look at the original plot displaying the data, background and signal distributions.
+**Hint:** Look at the original plot displaying the data, background and signal distributions.
+
+![](fig/Zprimett_distr.png){width="60%"}
 
 :::::::::::::::::::::::: solution 
 
 ## Solution
 
-  * In a count experiment setup, we can consider taking into account a part of the `mtt` distribution where the signal is dominant.
-  * We can do a shape analysis, which takes into account each bin separately.
+- In a count experiment setup, we can consider taking into account a part of the `mtt` distribution where the signal is dominant.
+- We can do a shape analysis, which takes into account each bin separately.
 
 :::::::::::::::::::::::::::::::::
 
@@ -225,13 +229,6 @@ We can multiply the signal strength limit with the theoretically predicted cross
 :::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::: keypoints
-
-- xxx
-- yyy
-::::::::::::
-
 
 
 
