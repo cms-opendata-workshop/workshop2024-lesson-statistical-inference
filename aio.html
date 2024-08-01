@@ -527,7 +527,7 @@ experimental data. They include</p>
 <li>
 <strong>parameters of interest (POI), <span class="math inline">\(\vec{\mu}\)</span>:</strong> The quantities we are
 interested in estimating or testing. Examples are cross section, signal
-strength, resonance mass, …</li>
+strength modifier, resonance mass, …</li>
 <li>
 <strong>nuisance parameters, <span class="math inline">\(\vec{\nu}\)</span>:</strong> parameters that are
 not of direct interest, but required to explain data. These could be
@@ -668,8 +668,8 @@ analysis, where the primary component is a Poisson. Remember that the
 number of expected events in that Poisson could be expressed as</p>
 <p><span class="math display">\[n_{exp} = \mu \rm{\sigma_{sig}^{eff}} L
 + \rm{\sigma_{bg}^{eff}} L\]</span></p>
-<p>where <span class="math inline">\(\mu\)</span> is the signal
-strength, <span class="math inline">\(\rm{\sigma_{sig}^{eff}}\)</span>
+<p>where <span class="math inline">\(\mu\)</span> is the signal strength
+modifier, <span class="math inline">\(\rm{\sigma_{sig}^{eff}}\)</span>
 and <span class="math inline">\(\rm{\sigma_{bg}^{eff}}\)</span> are
 signal and background effective cross sections and <span class="math inline">\(L\)</span> is the integrated luminosity. Suppose
 that, in a different study, we have measured that there is a 2.5%
@@ -680,7 +680,7 @@ number of events:</p>
 <p>When <span class="math inline">\(\nu = 0\)</span>, no change happens
 in <span class="math inline">\(L\)</span>, and consequently <span class="math inline">\(n_{exp}\)</span>. When <span class="math inline">\(\nu = \pm 1\)</span>, we have the <span class="math inline">\(+/-\)</span> effect. We apply a Gaussian
 constraint as</p>
-<p><span class="math display">\[\pi(\nu_0, \nu) = \pi(0, \nu)
+<p><span class="math display">\[\pi(\nu_0, \nu) = \pi(0 | \nu) -
 e^{-\frac{1}{2}\nu^2}\]</span></p>
 <p>Hence, the nuisance parameter for luminosity uncertainty is
 <strong>log-normally distributed</strong>.</p>
@@ -703,7 +703,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-03-limits"><p>Content from <a href="03-limits.html">Limits</a></p>
 <hr>
-<p>Last updated on 2024-07-31 |
+<p>Last updated on 2024-08-01 |
 
         <a href="https://github.com/cms-opendata-workshop/workbench-template-md/edit/main/episodes/03-limits.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -753,10 +753,10 @@ the range within which new particles or interactions could exist.</p>
 from the experimental data. They represent the actual constraint on the
 parameter of interest based on the measurements taken during the
 experiment.</p>
-<p><strong>Expected limits:</strong> These are limits are based on
-simulated data assuming no new phenomena exist (i.e., that the null
-hypothesis is true). They provide a benchmark for comparing the observed
-limits to what would be expected if only known physics were at play.</p>
+<p><strong>Expected limits:</strong> These are limits based on simulated
+data assuming no new phenomena exist (i.e., that the null hypothesis is
+true). They provide a benchmark for comparing the observed limits to
+what would be expected if only known physics were at play.</p>
 </section><section><h2 class="section-heading" id="calculating-limits">Calculating limits<a class="anchor" aria-label="anchor" href="#calculating-limits"></a>
 <a class="anchor" aria-label="anchor" href="#calculating-limits"></a>
 </h2>
@@ -788,13 +788,13 @@ defined as:<span class="math display">\[\lambda(\mu) =
 <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> represent the parameters of interest
 and nuisance parameters, <span class="math inline">\(\hat{\mu}\)</span>
 and <span class="math inline">\(\hat{\nu}\)</span> are the best-fit
-parameters, and <span class="math inline">\(\hat{\hat{\nu}}\)</span> is
-the conditional maximum likelihood estimator of the nuisance parameters
-given <span class="math inline">\(\mu\)</span>. Note that in the current
-LHC analyses, we use more complex test statistics such as the LHC-style
-test statistic. However, despite the added complexity, the main idea is
-the same. The test statistic is evaluated for observed data or
-pseudo-data</li>
+parameters, and <span class="math inline">\(\hat{\hat{\nu}}\)</span> (or
+$ ()$) is the conditional maximum likelihood estimator of the nuisance
+parameters given <span class="math inline">\(\mu\)</span>. Note that in
+the current LHC analyses, we use more complex test statistics such as
+the LHC-style test statistic. However, despite the added complexity, the
+main idea is the same. The test statistic is evaluated for observed data
+or pseudo-data</li>
 <li>
 <strong>p-value</strong>: Determine the p-value, which quantifies
 the probability of obtaining data as extreme as observed under the null
@@ -838,7 +838,7 @@ Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  --></section></section><section id="aio-04-combine"><p>Content from <a href="04-combine.html">The CMS Combine statistical analysis and combination software</a></p>
 <hr>
-<p>Last updated on 2024-07-31 |
+<p>Last updated on 2024-08-01 |
 
         <a href="https://github.com/cms-opendata-workshop/workbench-template-md/edit/main/episodes/04-combine.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -919,12 +919,12 @@ process probability distribution functions.</p>
 information to Combine. However, there are some cases where the
 statistical model requires modifications. An example case is where we
 need a model with multiple parameters of interest associated with
-different signal processes (e.g. measurement of signal strengths for two
-different Higgs production channels, gluon-gluon fusion and vector boson
-fusion). Combine also allows to build custom models by introducing
-modified model classes. Combine scales well with model complexity, and
-therefore is a powerful tool for combining a large number of
-analyses.</p>
+different signal processes (e.g. measurement of signal strength
+modifiers for two different Higgs production channels, gluon-gluon
+fusion and vector boson fusion). Combine also allows to build custom
+models by introducing modified model classes. Combine scales well with
+model complexity, and therefore is a powerful tool for combining a large
+number of analyses.</p>
 </section><section><h2 class="section-heading" id="tasks-performed-by-combine">Tasks performed by Combine<a class="anchor" aria-label="anchor" href="#tasks-performed-by-combine"></a>
 <a class="anchor" aria-label="anchor" href="#tasks-performed-by-combine"></a>
 </h2>
@@ -1035,8 +1035,8 @@ channels (<a href="https://cms-results.web.cern.ch/cms-results/public-results/pu
 The model can be found in <a href="https://repository.cern/records/c2948-e8875" class="external-link">this link</a>.</p>
 <p>You can download the model into the Combine container and see the
 discovery for yourself. The commands are available to combine channels,
-calculate the significance, measure the signal strength and build a
-model as Higgs-vector boson, Higgs-fermion coupling modifiers as
+calculate the significance, measure the signal strength modifier and
+build a model as Higgs-vector boson, Higgs-fermion coupling modifiers as
 POIs.</p>
 <p>More models are on their way to become public soon!</p>
 <!--
@@ -1091,7 +1091,8 @@ calculate limits from the results of the <span class="math inline">\(Z'\)</span>
 exercises. We will use the <code>Zprime_hists_FULL.root</code> file
 generated during the <a href="https://cms-opendata-workshop.github.io/workshop2024-lesson-uncertainties/instructor/05-challenge.html" class="external-link">Uncertainties
 challenge</a>. We will build various datacards from it, add systematics,
-calculate limits on the signal strength and understand the output.</p>
+calculate limits on the signal strength modifier and understand the
+output.</p>
 <div id="prereq1" class="callout prereq">
 <div class="callout-square">
 <i class="callout-icon" data-feather="check"></i>
@@ -1173,7 +1174,7 @@ uncertainties?</li>
 </div>
 </div>
 <p>Now run Combine over this datacard to obtain the limits on our
-parameter of interest, signal strength, with the simple
+parameter of interest, signal strength modifier, with the simple
 <code>AsymptoticLimits</code> option:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1182,8 +1183,8 @@ parameter of interest, signal strength, with the simple
 </div>
 <p>You will see some error messages concerning the computation of the
 observed limit, arising from numerical stability issues. In order to
-avoid this, let’s rerun by limiting the signal strength to be maximum
-2:</p>
+avoid this, let’s rerun by limiting the signal strength modifier to be
+maximum 2:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1232,7 +1233,7 @@ datacard.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Observed limit is below the expected boundaries because we have much
 more MC compared to data. This means there is less room for signal to be
@@ -1279,7 +1280,7 @@ limits.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <pre><code>lumi            lnN        1.025          1.025          1.025          1.025          1.025</code></pre>
 </div>
@@ -1332,7 +1333,7 @@ processes as well and observe their effect on the limits.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <pre><code>stat_signal     gmN 48238  0.0307         -              -              -              -
 stat_tt_semilep gmN 137080 -              0.0383         -              -              -
@@ -1367,7 +1368,7 @@ background and signal distributions.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ul>
 <li>In a count experiment setup, we can consider taking into account a
@@ -1421,10 +1422,10 @@ respect to the counts case?</p>
 <h3 class="callout-title">Limits on cross section<a class="anchor" aria-label="anchor" href="#limits-on-cross-section"></a>
 </h3>
 <div class="callout-content">
-<p>So far we have worked with limits on the signal strength. How can we
-compute the limits on cross section? Can you calculate the upper limit
-on <span class="math inline">\(Z'\)</span> cross section for this
-model?</p>
+<p>So far we have worked with limits on the signal strength modifier.
+How can we compute the limits on cross section? Can you calculate the
+upper limit on <span class="math inline">\(Z'\)</span> cross section
+for this model?</p>
 </div>
 </div>
 </div>
@@ -1433,10 +1434,10 @@ model?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<p>We can multiply the signal strength limit with the theoretically
-predicted cross section for the signal process.</p>
+<p>We can multiply the signal strength modifier limit with the
+theoretically predicted cross section for the signal process.</p>
 </div>
 </div>
 </div>

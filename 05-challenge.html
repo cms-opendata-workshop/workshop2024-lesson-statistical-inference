@@ -356,7 +356,8 @@ calculate limits from the results of the <span class="math inline">\(Z'\)</span>
 exercises. We will use the <code>Zprime_hists_FULL.root</code> file
 generated during the <a href="https://cms-opendata-workshop.github.io/workshop2024-lesson-uncertainties/instructor/05-challenge.html" class="external-link">Uncertainties
 challenge</a>. We will build various datacards from it, add systematics,
-calculate limits on the signal strength and understand the output.</p>
+calculate limits on the signal strength modifier and understand the
+output.</p>
 <div id="prereq1" class="callout prereq">
 <div class="callout-square">
 <i class="callout-icon" data-feather="check"></i>
@@ -432,7 +433,7 @@ uncertainties?</li>
 </div>
 </div>
 <p>Now run Combine over this datacard to obtain the limits on our
-parameter of interest, signal strength, with the simple
+parameter of interest, signal strength modifier, with the simple
 <code>AsymptoticLimits</code> option:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -441,8 +442,8 @@ parameter of interest, signal strength, with the simple
 </div>
 <p>You will see some error messages concerning the computation of the
 observed limit, arising from numerical stability issues. In order to
-avoid this, let’s rerun by limiting the signal strength to be maximum
-2:</p>
+avoid this, let’s rerun by limiting the signal strength modifier to be
+maximum 2:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -489,7 +490,7 @@ datacard.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Observed limit is below the expected boundaries because we have much
 more MC compared to data. This means there is less room for signal to be
@@ -531,7 +532,7 @@ limits.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <pre><code>lumi            lnN        1.025          1.025          1.025          1.025          1.025</code></pre>
 </div>
@@ -582,7 +583,7 @@ processes as well and observe their effect on the limits.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <pre><code>stat_signal     gmN 48238  0.0307         -              -              -              -
 stat_tt_semilep gmN 137080 -              0.0383         -              -              -
@@ -615,7 +616,7 @@ background and signal distributions.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ul><li>In a count experiment setup, we can consider taking into account a
 part of the <code>mtt</code> distribution where the signal is
@@ -665,10 +666,10 @@ respect to the counts case?</p>
 <h3 class="callout-title">Limits on cross section<a class="anchor" aria-label="anchor" href="#limits-on-cross-section"></a>
 </h3>
 <div class="callout-content">
-<p>So far we have worked with limits on the signal strength. How can we
-compute the limits on cross section? Can you calculate the upper limit
-on <span class="math inline">\(Z'\)</span> cross section for this
-model?</p>
+<p>So far we have worked with limits on the signal strength modifier.
+How can we compute the limits on cross section? Can you calculate the
+upper limit on <span class="math inline">\(Z'\)</span> cross section
+for this model?</p>
 </div>
 </div>
 </div>
@@ -677,10 +678,10 @@ model?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<p>We can multiply the signal strength limit with the theoretically
-predicted cross section for the signal process.</p>
+<p>We can multiply the signal strength modifier limit with the
+theoretically predicted cross section for the signal process.</p>
 </div>
 </div>
 </div>

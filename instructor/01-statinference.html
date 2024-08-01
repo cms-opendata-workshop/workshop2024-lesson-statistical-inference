@@ -490,7 +490,7 @@ experimental data. They include</p>
 <ul><li>
 <strong>parameters of interest (POI), <span class="math inline">\(\vec{\mu}\)</span>:</strong> The quantities we are
 interested in estimating or testing. Examples are cross section, signal
-strength, resonance mass, …</li>
+strength modifier, resonance mass, …</li>
 <li>
 <strong>nuisance parameters, <span class="math inline">\(\vec{\nu}\)</span>:</strong> parameters that are
 not of direct interest, but required to explain data. These could be
@@ -617,8 +617,8 @@ analysis, where the primary component is a Poisson. Remember that the
 number of expected events in that Poisson could be expressed as</p>
 <p><span class="math display">\[n_{exp} = \mu \rm{\sigma_{sig}^{eff}} L
 + \rm{\sigma_{bg}^{eff}} L\]</span></p>
-<p>where <span class="math inline">\(\mu\)</span> is the signal
-strength, <span class="math inline">\(\rm{\sigma_{sig}^{eff}}\)</span>
+<p>where <span class="math inline">\(\mu\)</span> is the signal strength
+modifier, <span class="math inline">\(\rm{\sigma_{sig}^{eff}}\)</span>
 and <span class="math inline">\(\rm{\sigma_{bg}^{eff}}\)</span> are
 signal and background effective cross sections and <span class="math inline">\(L\)</span> is the integrated luminosity. Suppose
 that, in a different study, we have measured that there is a 2.5%
@@ -629,7 +629,7 @@ number of events:</p>
 <p>When <span class="math inline">\(\nu = 0\)</span>, no change happens
 in <span class="math inline">\(L\)</span>, and consequently <span class="math inline">\(n_{exp}\)</span>. When <span class="math inline">\(\nu = \pm 1\)</span>, we have the <span class="math inline">\(+/-\)</span> effect. We apply a Gaussian
 constraint as</p>
-<p><span class="math display">\[\pi(\nu_0, \nu) = \pi(0, \nu)
+<p><span class="math display">\[\pi(\nu_0, \nu) = \pi(0 | \nu) -
 e^{-\frac{1}{2}\nu^2}\]</span></p>
 <p>Hence, the nuisance parameter for luminosity uncertainty is
 <strong>log-normally distributed</strong>.</p>
