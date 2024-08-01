@@ -22,7 +22,7 @@ exercises: 30
 
 :::::::::::
 
-The goal of this exercise is to use the `Combine` tool to calculate limits from the results of the $Z'$ search studied in the previous exercises. We will use the `Zprime_hists_FULL.root` file generated during the [Uncertainties challenge](https://cms-opendata-workshop.github.io/workshop2024-lesson-uncertainties/instructor/05-challenge.html).  We will build various datacards from it, add systematics, calculate limits on the signal strength and understand the output.
+The goal of this exercise is to use the `Combine` tool to calculate limits from the results of the $Z'$ search studied in the previous exercises. We will use the `Zprime_hists_FULL.root` file generated during the [Uncertainties challenge](https://cms-opendata-workshop.github.io/workshop2024-lesson-uncertainties/instructor/05-challenge.html).  We will build various datacards from it, add systematics, calculate limits on the signal strength modifier and understand the output.
 
 :::::::: prereq
 
@@ -67,13 +67,13 @@ python writecountdatacard.py
 
 :::::::::::::::::::::::::::::::::::::::::::::::
 
-Now run Combine over this datacard to obtain the limits on our parameter of interest, signal strength, with the simple `AsymptoticLimits` option:
+Now run Combine over this datacard to obtain the limits on our parameter of interest, signal strength modifier, with the simple `AsymptoticLimits` option:
 
 ```bash
 combine -M AsymptoticLimits datacard_count.txt
 ```
 
-You will see some error messages concerning the computation of the observed limit, arising from numerical stability issues.  In order to avoid this, let's rerun by limiting the signal strength to be maximum 2:
+You will see some error messages concerning the computation of the observed limit, arising from numerical stability issues.  In order to avoid this, let's rerun by limiting the signal strength modifier to be maximum 2:
 
 ```bash
 combine -M AsymptoticLimits datacard_count.txt --rMax=2
@@ -217,14 +217,14 @@ Run Combine with this datacard.  How do the limits compare with respect to the c
 
 ## Limits on cross section
 
-So far we have worked with limits on the signal strength.  How can we compute the limits on cross section?
+So far we have worked with limits on the signal strength modifier.  How can we compute the limits on cross section?
 Can you calculate the upper limit on $Z'$ cross section for this model?
 
 :::::::::::::::::::::::: solution 
 
 ## Solution
 
-We can multiply the signal strength limit with the theoretically predicted cross section for the signal process.
+We can multiply the signal strength modifier limit with the theoretically predicted cross section for the signal process.
 
 :::::::::::::::::::::::::::::::::
 
