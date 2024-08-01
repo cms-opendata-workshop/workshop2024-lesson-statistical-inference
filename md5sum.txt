@@ -9,5 +9,5 @@
 "episodes/04-combine.md" "00eda1b489e59fa29459fb5c8136931c" "site/built/04-combine.md" "2024-07-31"
 "episodes/05-challenge.md" "0bd1b11ab3b1b34181cb0fc343a726c6" "site/built/05-challenge.md" "2024-08-01"
 "instructors/instructor-notes.md" "cae72b6712578d74a49fea7513099f8c" "site/built/instructor-notes.md" "2024-07-30"
-"learners/setup.md" "5921e2db2503683624cdc269505ef739" "site/built/setup.md" "2024-07-31"
+"learners/setup.md" "16929af2d8e3e0021de3f8c5d0359027" "site/built/setup.md" "2024-08-01"
 "profiles/learner-profiles.md" "60b93493cf1da06dfd63255d73854461" "site/built/learner-profiles.md" "2024-07-30"
