@@ -782,19 +782,19 @@ predictions of the null hypothesis.</li>
 <strong>Test statistic</strong>: Calculate a test statistic, such as
 the profile likelihood ratio, which compares how well the data fits
 under both <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span>. The profile likelihood ratio is
-defined as:<span class="math display">\[\lambda(\mu) =
-\frac{\mathcal{L}(\mu, \hat{\hat{\nu}})}{\mathcal{L}(\hat{\mu},
-\hat{\nu})}\]</span> where <span class="math inline">\(\mathcal{L}\)</span> is the likelihood function,
+defined as: <span class="math display">\[\lambda(\mu) =
+\frac{\mathcal{L}(\mu, \hat{\nu}(\mu))}{\mathcal{L}(\hat{\mu},
+\hat{\nu})}\]</span>: where <span class="math inline">\(\mathcal{L}\)</span> is the likelihood function,
 <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> represent the parameters of interest
 and nuisance parameters, <span class="math inline">\(\hat{\mu}\)</span>
 and <span class="math inline">\(\hat{\nu}\)</span> are the best-fit
-parameters, and <span class="math inline">\(\hat{\hat{\nu}}\)</span> (or
-$ ()$) is the conditional maximum likelihood estimator of the nuisance
-parameters given <span class="math inline">\(\mu\)</span>. Note that in
-the current LHC analyses, we use more complex test statistics such as
-the LHC-style test statistic. However, despite the added complexity, the
-main idea is the same. The test statistic is evaluated for observed data
-or pseudo-data</li>
+parameters, and <span class="math inline">\(\hat{\nu}(\mu)\)</span> is
+the conditional maximum likelihood estimator of the nuisance parameters
+given <span class="math inline">\(\mu\)</span>. Note that in the current
+LHC analyses, we use more complex test statistics such as the LHC-style
+test statistic. However, despite the added complexity, the main idea is
+the same. The test statistic is evaluated for observed data or
+pseudo-data</li>
 <li>
 <strong>p-value</strong>: Determine the p-value, which quantifies
 the probability of obtaining data as extreme as observed under the null
