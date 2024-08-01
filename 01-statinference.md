@@ -136,7 +136,7 @@ In these cases, the primary observable $x$ in each channel can be univariate or 
 
 $$p(x;\vec{\mu}, \vec{\nu}) = \sum_p \frac{\lambda_p(\vec{\mu},\vec{\nu}) f_p(x; \vec{\mu}, \vec{\nu})}{\sum_p \lambda_p(\vec{\mu}, \vec{\nu})}$$
 
-Here $p$ stands for process and $f_p(x; \vec{\mu}, \vec{\nu})$ are the probability distribution functions for each process.  The figure below shows an example, where sigma and alpha are the uncertainties on parameters of the analytic function.
+Here $p$ stands for process and $f_p(x; \vec{\mu}, \vec{\nu})$ are the probability density functions for each process.  The figure below shows an example, where sigma and alpha are the uncertainties on parameters of the analytic function.
 
 ![Plot showing a parametric shape model with uncertainties](fig/parametric_shape_analysis.png){width="50%"}
 
