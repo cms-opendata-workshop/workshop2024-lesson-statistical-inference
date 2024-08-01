@@ -65,7 +65,7 @@ Statistical inference is the last step of an analysis and plays a crucial role i
 
 **Statistical model** is the mathematical framework used to describe and make inferences about the underlying processes that generate observed data. It encodes the probabilistic dependence of the observed quantities (i.e. data) on parameters of the model.  These parameters are not directly observable but can be inferred from experimental data.  They include
 
-- **parameters of interest (POI), $\vec{\mu}$:** The quantities we are interested in estimating or testing. Examples are cross section, signal strength, resonance mass, ...
+- **parameters of interest (POI), $\vec{\mu}$:** The quantities we are interested in estimating or testing. Examples are cross section, signal strength modifier, resonance mass, ...
 - **nuisance parameters, $\vec{\nu}$:** parameters that are not of direct interest, but required to explain data.  These could be uncertainties of experimental or theoretical origin, such as detector effects, background measurements, lumi calibration, cross-section calculation.
 
 Data are also partitioned into two:
@@ -149,13 +149,13 @@ Let's give a concrete example for luminosity.  Imagine a counting analysis, wher
 
 $$n_{exp} = \mu \rm{\sigma_{sig}^{eff}} L + \rm{\sigma_{bg}^{eff}} L$$
 
-where $\mu$ is the signal strength, $\rm{\sigma_{sig}^{eff}}$ and $\rm{\sigma_{bg}^{eff}}$ are signal and background effective cross sections and $L$ is the integrated luminosity.  Suppose that, in a different study, we have measured that there is a 2.5% uncertainty on luminosity, which would directly effect the expected number of events:
+where $\mu$ is the signal strength modifier, $\rm{\sigma_{sig}^{eff}}$ and $\rm{\sigma_{bg}^{eff}}$ are signal and background effective cross sections and $L$ is the integrated luminosity.  Suppose that, in a different study, we have measured that there is a 2.5% uncertainty on luminosity, which would directly effect the expected number of events:
 
 $$L \rightarrow L(1 + 0.025)^\nu$$
 
 When $\nu = 0$, no change happens in $L$, and consequently $n_{exp}$.  When $\nu = \pm 1$, we have the $+/-$ effect.  We apply a Gaussian constraint as
 
-$$\pi(\nu_0, \nu) = \pi(0, \nu) e^{-\frac{1}{2}\nu^2}$$
+$$\pi(\nu_0, \nu) = \pi(0 | \nu) - e^{-\frac{1}{2}\nu^2}$$
 
 Hence, the nuisance parameter for luminosity uncertainty is **log-normally distributed**.
 

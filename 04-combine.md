@@ -42,7 +42,7 @@ Datacard  includes information such as
 
 Combine supports building models for counting analyses, template shape analyses and parametric shape analyses. Though the main datacard syntax is similar for these three cases, there are minor differences reflecting the model input.  For example, in the case for a template shape model, one needs to specify a ROOT file with input histograms, and in the case of a parametric shape model, one needs to specify the process probability distribution functions.
 
-Constructing a datacard is usually the level most users input information to Combine.  However, there are some cases where the statistical model requires modifications.  An example case is where we need a model with multiple parameters of interest associated with different signal processes (e.g. measurement of signal strengths for two different Higgs production channels, gluon-gluon fusion and vector boson fusion). Combine also allows to build custom models by introducing modified model classes.
+Constructing a datacard is usually the level most users input information to Combine.  However, there are some cases where the statistical model requires modifications.  An example case is where we need a model with multiple parameters of interest associated with different signal processes (e.g. measurement of signal strength modifiers for two different Higgs production channels, gluon-gluon fusion and vector boson fusion). Combine also allows to build custom models by introducing modified model classes.
 Combine scales well with model complexity, and therefore is a powerful tool for combining a large number of analyses.
 
 
@@ -107,6 +107,6 @@ In December 2023, CMS Collaboration took the decision to release statistical mod
 
 The first statistical model published is that for the Higgs boson discovery.  The model consists of the Run 1 combination of 5 main Higgs channels ([CMS-HIG-12-028](https://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-12-028/index.html)). The model can be found in [this link](https://repository.cern/records/c2948-e8875). 
 
-You can download the model into the Combine container and see the discovery for yourself. The commands are available to combine channels, calculate the significance, measure the signal strength and build a model as Higgs-vector boson, Higgs-fermion coupling modifiers as POIs.
+You can download the model into the Combine container and see the discovery for yourself. The commands are available to combine channels, calculate the significance, measure the signal strength modifier and build a model as Higgs-vector boson, Higgs-fermion coupling modifiers as POIs.
 
 More models are on their way to become public soon!
